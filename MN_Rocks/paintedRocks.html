@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MN Rocks!!!!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Painted Rocks</h1>
+	
+    <a href="index.html">Home</a>
+ 
+  <div class="desc">
+    <div class="tittle">
+      <h1 class="judul">This is galery</h1>
+      <p class="text">This is my painted rock photo collection, and their hiding spots</p>
+    </div>
+ 
+    <div class="imgsrc">
+      <img src="rocks/Rocks.jpg" class="prev">
+    </div>
+  </div>
+ 
+  <div class="thumbnail">
+    <img src="rocks/rock1_pic1.jpg" class="thumb">
+ 
+    <img src="rocks/rock1_pic2.jpg" class="thumb">
+	
+	<img src="rocks/rock2_pic1.jpg" class="thumb">
+	
+	<img src="rocks/rock2_pic2.jpg" class="thumb">
+	
+	<img src="rocks/rock3_pic1.jpg" class="thumb">
+	
+	<img src="rocks/rock4_pic1.jpg" class="thumb">
+	
+	<img src="rocks/rock4_pic2.jpg" class="thumb">
+	
+	<img src="rocks/Rocks.jpg" class="thumb">
+	
+	<img src="rocks/rock5_pic1.jpg" class="thumb">
+	
+	<img src="rocks/rock6_pic1.jpg" class="thumb">
+	
+	<img src="rocks/rock7_pic1.jpg" class="thumb">
+ 
+ 	<img src="rocks/rock8_pic1.jpg" class="thumb">
+  </div>
+</div>
+
+
+
+<!--Java Script Code for switching the main image on the page-->
+<script>
+const container = document.querySelector(".container");
+const preview = document.querySelector(".prev");
+const active = document.querySelectorAll(".thumb");
+ 
+container.addEventListener("click", function (e) {
+  if (e.target.className == "thumb") {
+    preview.src = e.target.src;
+    preview.classList.add("effect");
+ 
+    setTimeout(function () {
+      preview.classList.remove("effect");
+    }, 100);
+ 
+    active.forEach(function (thumb) {
+      if (thumb.classList.contains("active")) {
+        thumb.classList.remove("active");
+      }
+    });
+ 
+    e.target.classList.add("active");
+  }
+});
+</script>
+
+
+
+</body>
+
+</html>
