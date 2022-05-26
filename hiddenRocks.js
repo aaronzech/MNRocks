@@ -1,17 +1,14 @@
-// Create HTML element 
+//Rock Array
+let rock = [];
 
-/*
-		<div class="mapSpot">
-			<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2811.948488141443!2d-93.18941368445178!3d45.188138979098646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb6b990e560499276!2zNDXCsDExJzE3LjMiTiA5M8KwMTEnMTQuMCJX!5e0!3m2!1sen!2sus!4v1652899400380!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-			<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2811.948488141443!2d-93.18941368445178!3d45.188138979098646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb6b990e560499276!2zNDXCsDExJzE3LjMiTiA5M8KwMTEnMTQuMCJX!5e0!3m2!1sen!2sus!4v1652899400380!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		</div>
-		<div class="imgSpot1">
-			<img src="rocks/rock11_pic1.jpg" width="625" height ="550">
-		</div>
-		<div class="imgSpot2">
-			<img src="rocks/rock11_pic2.jpg" width="625" height ="550">
-		</div>
-*/
+// Rock Class
+class Rock {
+
+    img1 = null;
+    img2 = null;
+    rockLoaction ='';
+
+}
 
 //Photo Array
 rockPhotos = [
@@ -65,7 +62,9 @@ rockLocations = [
 // Grab wrapper
 const wrapper = document.querySelector(".wrapper");
 
-function CreateTableRow(img1Src,img2Src,rockLoactionIndex){
+
+// Create webpage layout with Rock data
+function CreateTableRow(rock){
 
     //Create HTML Elements
     const divMap = document.createElement('div');
@@ -82,13 +81,13 @@ function CreateTableRow(img1Src,img2Src,rockLoactionIndex){
     iFrameMap.classList.add("map");
     divImgSpot2.classList.add("imgSpot2");
     // Set Sources
-    img1.src=rockPhotos[img1Src];
-    if(img2Src==null){
+    img1.src=rock.img1;
+    if(rock.img2==null){
         img2.src=null;
     }else{
-        img2.src=rockPhotos[img2Src]
+        img2.src=rock.img2;
     }
-    iFrameMap.src=rockLocations[rockLoactionIndex];
+    iFrameMap.src=rock.rockLoaction;
     // Add HTLM Elements to the page
     wrapper.appendChild(divMap);
     divMap.appendChild(iFrameMap);
@@ -98,25 +97,91 @@ function CreateTableRow(img1Src,img2Src,rockLoactionIndex){
     divImgSpot2.appendChild(img2);
 
     // Remove 2nd image if none was provided
-    if(img2Src==null){
+    if(rock.img2==null){
         divImgSpot2.removeChild(img2);
     }
 }
 
+
+
+// Create inital Rock Objects and populate fields
+function createRockObjects(){
+    // Populate Rocks
+rock1 = new Rock();
+rock1.img1 = rockPhotos[0];
+rock1.img2 = rockPhotos[1];
+rock1.rockLoaction = rockLocations[0];
+rock.push(rock1);
+
+//rock 2
+rock2 = new Rock();
+rock2.img1 = rockPhotos[2];
+rock2.img2 = rockPhotos[3];
+rock2.rockLoaction = rockLocations[1];
+rock.push(rock2);
+//rock 3
+rock3 = new Rock();
+rock3.img1 = rockPhotos[4];
+rock3.rockLoaction = rockLocations[2];
+rock.push(rock3);
+
+//rock 4
+rock4 = new Rock();
+rock4.img1 = rockPhotos[5];
+rock4.img2 = rockPhotos[6];
+rock4.rockLoaction = rockLocations[3];
+rock.push(rock4);
+//rock 5
+rock5 = new Rock();
+rock5.img1 = rockPhotos[7];
+rock5.rockLoaction = rockLocations[4];
+rock.push(rock5);
+//rock 6
+rock6 = new Rock();
+rock6.img1 = rockPhotos[8];
+rock6.rockLoaction = rockLocations[5];
+rock.push(rock6);
+//rock 8
+rock8 = new Rock();
+rock8.img1 = rockPhotos[9];
+rock8.rockLoaction = rockLocations[6];
+rock.push(rock8);
+//rock 9
+rock9 = new Rock();
+rock9.img1 = rockPhotos[10];
+rock9.img2 = rockPhotos[11];
+rock9.rockLoaction = rockLocations[7];
+rock.push(rock9);
+//rock 10
+rock10 = new Rock();
+rock10.img1 = rockPhotos[12];
+rock10.img2 = rockPhotos[13];
+rock10.rockLoaction = rockLocations[8];
+rock.push(rock10);
+//rock 11
+rock11 = new Rock();
+rock11.img1 = rockPhotos[14];
+rock11.img2 = rockPhotos[15];
+rock11.rockLoaction = rockLocations[9];
+rock.push(rock11);
+//rock 12
+rock12 = new Rock();
+rock12.img1 = rockPhotos[16];
+rock12.rockLoaction = rockLocations[10];
+rock.push(rock12);
+}
+
+
+
+
+//Main
+
+createRockObjects()
+
 // Populate webpage
-CreateTableRow(0,1,0) // Rock 1
-CreateTableRow(2,3,1) // Rock 2
-CreateTableRow(4,null,2) // Rock 3
-CreateTableRow(5,6,3) // Rock 4
-CreateTableRow(7,null,4) // Rock 5
-CreateTableRow(8,null,5);// Rock 6
-CreateTableRow(9,null,6);// Rock 8
-CreateTableRow(10,11,7);// Rock 9
-CreateTableRow(12,13,8); // Rock 10
-CreateTableRow(14,15,9); // Rock 11
-CreateTableRow(16,null,10); // Rock 12
-
-
+rock.forEach(element => {
+    CreateTableRow(element);
+});
 
 
 
