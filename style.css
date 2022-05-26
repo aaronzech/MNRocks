@@ -101,4 +101,18 @@ body {
   opacity: 0.5;
 }
  
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 8px;
+  
+}
+
+.imgSpot{
+  width: 625px;
+  height: 550px;
+}
+
+
 </style>
