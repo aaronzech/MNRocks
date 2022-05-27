@@ -15,7 +15,7 @@ body {
 .map {
   width: 655px;
   height: 550px;
-
+  border-radius: 3%;
 }
  
 .container {
@@ -112,10 +112,13 @@ body {
 .imgSpot{
   width: 625px;
   height: 550px;
+  border-radius: 3%;
 }
 .icon1{
   padding-left: 10px;
   padding-right: 10px;
+  width:32px;
+  height:32px;
 }
 
 a{
@@ -127,6 +130,20 @@ a:hover {
   color:#193A78; 
   text-decoration:none; 
   cursor:pointer;  
+}
+
+.navbar{
+  background-color:#F5C56F;
+  color :#1D438A;
+  border:none;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  font-size: 20px;
+}
+.painted-rocks,.hidden-rocks{
+  padding-top: 5px;
+  padding-right: 5px;
 }
 
 </style>
