@@ -113,6 +113,20 @@ body {
   width: 625px;
   height: 550px;
 }
+.icon1{
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
+a{
+  color: #1C4185;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#193A78; 
+  text-decoration:none; 
+  cursor:pointer;  
+}
 
 </style>
