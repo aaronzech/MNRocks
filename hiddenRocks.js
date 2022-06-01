@@ -121,6 +121,15 @@ function CreateTableRow(rock){
 }
 
 
+//Add a rock from outside sources 
+function addRock(){
+    // Populate Rocks
+    rockNew = new Rock();
+    rockNew.img1 = rockPhotos[rockPhotos.length-1];
+    rockNew.rockLoaction = rockLocations[rockLocations.length-1];
+    rock.push(rockNew);
+}
+
 
 // Create inital Rock Objects and populate fields
 function createRockObjects(){
