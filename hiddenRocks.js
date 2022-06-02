@@ -140,11 +140,12 @@ function addRock(){
     rockNew.img2 = rockPhotos[rockPhotos.length-1];
     rockNew.rockLoaction = rockLocations[rockLocations.length-1];
     rock.push(rockNew);
-
+    
+    
+   
     CreateTableRow(rockNew);
 
-    // Save New Rock to local storage 
-    localStorage.setItem("Rocks",rock);
+    //save(rock);
 
     }catch(e){
         console.log("No rocks in local storage"+e);
@@ -246,29 +247,55 @@ function createRockObjects(){
     rock17.img2 = rockPhotos[24];
     rock17.rockLoaction = rockLocations[15];
     rock.push(rock17);
+
+    // Save To Local Storage
+    localStorage.setItem("rocks",JSON.stringify(rock));
 }
 
 
 
-//Main
-
-
-createRockObjects()
-
-// Populate webpage
-rock.forEach(element => {
-    CreateTableRow(element);
-
-    //Save Rock Object Array to Local storage
-    localStorage.setItem("Rocks",rock);
+function save(rock){
     
-});
+    // Save To Local Storage
+     localStorage.setItem("rocks",JSON.stringify(rock));
+     let newObject = window.localStorage.getItem("rocks");
+     console.warn("SAVE FUNCTION CURRENT ROCKS: "+ JSON.parse(newObject));
+}
+
+
+//------Main-----------
+//---------------------
+
+
+// Fresh load
+if(localStorage.getItem("rocks") === null){
+    createRockObjects();
+    // Populate webpage
+    rock.forEach(element => {
+        CreateTableRow(element);
+    });
+    
+}else{
+    // Load via local storage
+    localRocks = localStorage.getItem("rocks");
+    console.log('LOCALROCKA:' + localRocks);
+    
+    let newObject = window.localStorage.getItem("rocks");
+    console.warn(JSON.parse(newObject));
+
+    var localRocks = JSON.parse(newObject);
+
+    console.log(localRocks[0]);
+    
+    // Populate Web page
+    localRocks.forEach(element => {
+        CreateTableRow(element);
+    });
+    
+}
 
 // Add in new rocks from form
 addRock();
-
-
-// Want to cache the first rock array so that it doesn't need to reload it each time, then just add in new addtions
 
 
 
