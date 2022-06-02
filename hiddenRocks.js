@@ -123,11 +123,33 @@ function CreateTableRow(rock){
 
 //Add a rock from outside sources 
 function addRock(){
+
+    try{
+            // Load Rocks from local storage submitted by Rock Form 
+    rockPhotos.push(localStorage.getItem("File Path 1"));
+    rockPhotos.push(localStorage.getItem("File Path 2"));
+    localStorage.getItem("painter name");
+    localStorage.getItem("date hid");
+    rockLocations.push(localStorage.getItem("mapLocation"));
+    console.log(rockPhotos);
+    console.log(rockLocations);
     // Populate Rocks
     rockNew = new Rock();
-    rockNew.img1 = rockPhotos[rockPhotos.length-1];
+    
+    rockNew.img1 = rockPhotos[rockPhotos.length-2];
+    rockNew.img2 = rockPhotos[rockPhotos.length-1];
     rockNew.rockLoaction = rockLocations[rockLocations.length-1];
     rock.push(rockNew);
+
+    CreateTableRow(rockNew);
+
+    // Save New Rock to local storage 
+    localStorage.setItem("Rocks",rock);
+
+    }catch(e){
+        console.log("No rocks in local storage"+e);
+    }
+
 }
 
 
@@ -228,27 +250,25 @@ function createRockObjects(){
 
 
 
-function zoom(){
-    var NAME = document.getElementById("imgs");
-
-
-        $("#imgs").animate(
-            {'width': '150px','height':'250px'},150
-        );
-
-    
-}
-
-
 //Main
+
 
 createRockObjects()
 
 // Populate webpage
 rock.forEach(element => {
     CreateTableRow(element);
+
+    //Save Rock Object Array to Local storage
+    localStorage.setItem("Rocks",rock);
+    
 });
 
+// Add in new rocks from form
+addRock();
+
+
+// Want to cache the first rock array so that it doesn't need to reload it each time, then just add in new addtions
 
 
 

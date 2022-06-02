@@ -1,9 +1,9 @@
 "use strict"
-const issueForm = document.getElementById('issue-form');
-issueForm.addEventListener('submit', createIssue);
+const rockForm = document.getElementById('rock-form');
+rockForm.addEventListener('submit', createRock);
 
 // Create a new rock dispaly it to the page
-function createIssue(event) {
+function createRock(event) {
   event.preventDefault();
   const id = chance.guid();
   const painterName = document.getElementById('painter-name').value;
@@ -11,22 +11,20 @@ function createIssue(event) {
   const dateHid = document.getElementById('date-hid').value;
   const filePath2 = document.getElementById('file-path-2').value;
   const mapLocation = document.getElementById('map-location').value;
-  const status = 'Open';
+
 
  
 
  // Need to work on passing and sharing variables and functions betweeen pages
-  
-  rockPhotos.push(filePath1);
-  rockPhotos.push(filePath2);
-  rockLocations.push(mapLocation);
+ // save to local stoarge 
+  localStorage.setItem("File Path 1","/rocks/"+filePath1+".jpg");
+  localStorage.setItem("File Path 2","/rocks/"+filePath2+".jpg");
+  localStorage.setItem("painter name",painterName);
+  localStorage.setItem("date hid",dateHid);
+  localStorage.setItem("mapLocation",mapLocation);
 
- 
-
-  console.log(rock);
-
-  issueForm.reset();
-  issueForm.querySelector('#issue-desc').focus();
+  rockForm.reset();
+  //rockForm.querySelector('#issue-desc').focus();
 }
 
 
