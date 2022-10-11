@@ -2,7 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const session = require('express-session')
-
+const ejsMate = require('ejs-mate');
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+const methodOverride = require('method-override');
 // Mongoose Items
 const mongoose = require('mongoose');
 const { MongoServerClosedError } = require('mongodb');
@@ -10,6 +13,9 @@ const User = require('./Models/user')
 
 const passport = require("passport")
 const LocalStrategy = require('passport-local');
+app.use(express.urlencoded({
+    extended: true
+}));
 
 mongoose.connect('mongodb://localhost:27017/mnRocks', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -31,7 +37,7 @@ const sessionConfig = {
     }
 }
 app.use(session(sessionConfig))
-
+app.use(methodOverride('_method'));
 
 // Passport Plugins
 app.use(passport.initialize());
@@ -40,8 +46,15 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+const userRoutes = require('./routes/users')
+
+
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
+app.engine('ejs', ejsMate)
+
+app.use('/',userRoutes)
 
 app.get('/rock',(req,res) => {
     res.send('Rock from express');
