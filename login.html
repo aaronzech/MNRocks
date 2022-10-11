@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    	<nav class="navbar">
+		<div class="painted-rocks">
+			<a class="nav-link" href="paintedRocks.html">Painted Rocks</a>
+		
+		</div>
+		<div class="icon1">
+			<img class="navbarIcon" src="./icons/rock.png">
+		</div>
+		<div class="hidden-rocks">
+			<a class="nav-link" href="hiddenRocks.html">Hidden Rocks</a>
+			
+		</div>
+		<div class="icon1">
+			<img class = "navbarIcon" src="./icons/world.png">
+		</div>
+		<div class="add-rock">
+			<a class="nav-link" href="rockForm.html">Submit a Rock</a>	
+		</div>
+		<div class="icon1">
+			<img class = "navbarIcon" src="./icons/rock.png">
+		</div>
+		<div class="login">
+			<a class="nav-link" href="login.html">Login</a>	
+		</div>
+	</nav>
+                <form action="/login" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block">Login</button>
+                    </form>
+</body>
+</html>
